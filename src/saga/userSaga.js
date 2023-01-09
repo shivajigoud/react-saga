@@ -1,5 +1,5 @@
 import { takeEvery, call, put } from '@redux-saga/core/effects';
-import { fetchAllUsers } from '../restAPI/userAPI';
+import userAPI from '../restAPI/userAPI';
 import {
   FETCH_ALL_USERS,
   FETCH_USER,
@@ -9,9 +9,9 @@ import {
 } from '../actions/actions';
 
 function* fetchAllUsers() {
-  const users = yield call(fetchAllUsers);
-  console.log(users);
+  const users = yield call(userAPI.fetchAllUsers());
+  console.log(users.json());
 }
 export default function* userSaga() {
-  yield takeEvery(FETCH_ALL_USERS);
+  yield takeEvery(FETCH_ALL_USERS, fetchAllUsers);
 }

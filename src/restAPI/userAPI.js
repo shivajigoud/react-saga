@@ -1,7 +1,9 @@
 import { axios } from 'axios';
-export const userAPI = () => {
+const userAPI = () => {
   fetchAllUsers = () => {
-    return axios.get('https://gorest.co.in/public/v2/users');
+    return fetch('https://gorest.co.in/public/v2/users');
   };
   return { fetchAllUsers };
 };
+
+export default userAPI();

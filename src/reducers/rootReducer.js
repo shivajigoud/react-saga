@@ -1,4 +1,4 @@
-import { combineReducer } from '@reduxjs/toolkit';
+import { combineReducers } from '@reduxjs/toolkit';
 import {
   users,
   createUser,
@@ -7,7 +7,7 @@ import {
   deleteUser,
 } from './userReducer';
 
-export default rootReducer = combineReducer({
+export const rootReducer = combineReducers({
   users,
   createUser,
   updateUser,
