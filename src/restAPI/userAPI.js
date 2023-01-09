@@ -1,7 +1,9 @@
 import { axios } from 'axios';
 const userAPI = () => {
-  fetchAllUsers = () => {
-    return fetch('https://gorest.co.in/public/v2/users');
+  const fetchAllUsers = () => {
+    return fetch('https://gorest.co.in/public/v2/usersdsa')
+      .then((response) => ({ response }))
+      .catch((error) => ({ error }));
   };
   return { fetchAllUsers };
 };
