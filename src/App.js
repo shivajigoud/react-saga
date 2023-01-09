@@ -7,17 +7,20 @@ export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: FETCH_ALL_USERS, payLoad: [] });
-  }, [dispatch]);
+  }, []);
   return (
     <div>
       <h1>Hello StackBlitz!</h1>
       <p>Start editing to see some magic happen :)</p>
-      <ul>
-        {users &&
-          users.map((data, i) => {
+      {users && users.length > 0 ? (
+        <ul>
+          {users.map((data, i) => {
             return <li key={`user${i}`}>{data.email}</li>;
           })}
-      </ul>
+        </ul>
+      ) : (
+        <h2>{error}</h2>
+      )}
     </div>
   );
 }

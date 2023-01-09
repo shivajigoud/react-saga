@@ -7,20 +7,20 @@ import {
   PUT_ERROR,
 } from '../actions/actions';
 
-export const users = (state = [], action) => {
+export const users = (state = { users: [], error: null }, action) => {
   switch (action.type) {
     case PUT_FETCH_ALL_USERS:
-      return [...action.payLoad];
+      return { ...state, ...action.payLoad };
     case PUT_CREATE_USER:
-      return [...state.users, ...action.payLoad];
+      return { ...state.users, ...action.payLoad };
     case PUT_UPDATE_USER:
-      return [...state.users, ...action.payLoad];
+      return { ...state.users, ...action.payLoad };
     case PUT_FETCH_USER:
-      return [...action.payLoad];
+      return state.users.filter((user) => user.id == action.payLoad);
     case PUT_DELETE_USER:
-      return [...state.users.map()];
+      return state.users.filter((user) => user.id !== action.payLoad);
     case PUT_ERROR:
-      return { ...state.error };
+      return { ...state, ...state.error };
     default:
       return state;
   }
