@@ -10,7 +10,7 @@ import {
 export const users = (state = { users: [], error: null }, action) => {
   switch (action.type) {
     case PUT_FETCH_ALL_USERS:
-      return { ...state, ...action.payLoad };
+      return { ...state.users, ...action.payLoad };
     case PUT_CREATE_USER:
       return { ...state.users, ...action.payLoad };
     case PUT_UPDATE_USER:

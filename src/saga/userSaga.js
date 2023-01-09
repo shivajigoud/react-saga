@@ -18,7 +18,7 @@ function* fetchAllUsers() {
   const { response, error } = yield call(userAPI.fetchAllUsers);
   if (response.status == 200) {
     const users = yield response.json();
-    yield put({ type: PUT_FETCH_ALL_USERS, payLoad: { users } });
+    yield put({ type: PUT_FETCH_ALL_USERS, payLoad: users });
     console.log(users);
   } else {
     yield put({
