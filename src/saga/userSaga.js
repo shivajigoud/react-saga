@@ -27,6 +27,78 @@ function* fetchAllUsers() {
     });
   }
 }
+function* createUser(userAction) {
+  const { response, error } = yield call(userAPI.createUser);
+  if (response.status == 200) {
+    const users = yield response.json();
+    yield put({ type: PUT_FETCH_ALL_USERS, payLoad: users });
+    console.log(users);
+  } else {
+    yield put({
+      type: PUT_ERROR,
+      payLoad: 'There is an error occured while fetching users list',
+    });
+    yield put({
+      type: PUT_CREATE_USER,
+      payLoad: userAction.payLoad,
+    });
+  }
+}
+function* updateUser(userAction) {
+  const { response, error } = yield call(userAPI.updateUser);
+  if (response.status == 200) {
+    const users = yield response.json();
+    yield put({ type: PUT_FETCH_ALL_USERS, payLoad: users });
+    console.log(users);
+  } else {
+    yield put({
+      type: PUT_ERROR,
+      payLoad: 'There is an error occured while fetching users list',
+    });
+    yield put({
+      type: PUT_UPDATE_USER,
+      payLoad: userAction.payLoad,
+    });
+  }
+}
+function* deleteUser(userAction) {
+  const { response, error } = yield call(userAPI.deleteUser);
+  if (response.status == 200) {
+    const users = yield response.json();
+    yield put({ type: PUT_FETCH_ALL_USERS, payLoad: users });
+    console.log(users);
+  } else {
+    yield put({
+      type: PUT_ERROR,
+      payLoad: 'There is an error occured while fetching users list',
+    });
+    yield put({
+      type: PUT_DELETE_USER,
+      payLoad: userAction.payLoad,
+    });
+  }
+}
+function* fetchUser(userAction) {
+  const { response, error } = yield call(userAPI.fetchUser);
+  if (response.status == 200) {
+    const users = yield response.json();
+    yield put({ type: PUT_FETCH_ALL_USERS, payLoad: users });
+    console.log(users);
+  } else {
+    yield put({
+      type: PUT_ERROR,
+      payLoad: 'There is an error occured while fetching users list',
+    });
+    yield put({
+      type: PUT_FETCH_USER,
+      payLoad: userAction.payLoad,
+    });
+  }
+}
 export default function* userSaga() {
   yield takeEvery(FETCH_ALL_USERS, fetchAllUsers);
+  yield takeEvery(CREATE_USER, createUser);
+  yield takeEvery(UPDATE_USER, updateUser);
+  yield takeEvery(DELETE_USER, deleteUser);
+  yield takeEvery(FETCH_USER, fetchUser);
 }

@@ -15,10 +15,10 @@ export default function UserTable() {
       <h2>{error.error}</h2>
       <table>
         <thead>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Gender</th>
-          <th>Status</th>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Gender</td>
+          <td>Status</td>
         </thead>
         <tbody>
           {usersList &&
