@@ -10,9 +10,9 @@ export default function UserTable() {
   const dispatch = useDispatch();
   const { userFormState, setUserFormState } = useForm();
   const navigate = useNavigate();
-  const editUser = async (id) => {
+  const editUser = async (e, id) => {
     setUserFormState('Save');
-    navigate('/editUser');
+    navigate('/editUser/:' + id);
   };
   useEffect(() => {
     dispatch({ type: FETCH_ALL_USERS, payLoad: [] });
@@ -44,9 +44,7 @@ export default function UserTable() {
                   <td>{userData.gender}</td>
                   <td>{userData.status}</td>
                   <td>
-                    <button onClick={(userKey) => editUser(userKey)}>
-                      Edit
-                    </button>
+                    <button onClick={(e) => editUser(e, userkey)}>Edit</button>
                   </td>
                   <td>
                     <button>Delete</button>
