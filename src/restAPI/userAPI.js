@@ -16,22 +16,22 @@ const userAPI = () => {
   };
   const updateUser = (id, user) => {
     return fetch(
-      'https://gorest.co.in/public/v2/users/' + id,
-      { method: 'patch' },
+      'https://gorest.co.in/public/v2/users/',
+      { method: 'post' },
       { data: JSON.stringify(user) }
     )
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
   };
   const deleteUser = (id) => {
-    return fetch('https://gorest.co.in/public/v2/users/' + id, {
+    return fetch('https://gorest.co.in/public/v2/users/', {
       method: 'post',
     })
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
   };
   const fetchUser = (id) => {
-    return fetch('https://gorest.co.in/public/v2/users/' + id)
+    return fetch('https://gorest.co.in/public/v2/users/')
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
   };

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { FETCH_ALL_USERS } from '../actions/actions';
+import { FETCH_ALL_USERS, DELETE_USER } from '../actions/actions';
 import useForm from '../hooks/useForm';
 import { useNavigate } from 'react-router-dom';
 export default function UserTable() {
@@ -13,6 +13,9 @@ export default function UserTable() {
   const editUser = async (e, id) => {
     await setFormState('Save');
     navigate('/editUser/' + id);
+  };
+  const deleteUser = async (e, id) => {
+    dispatch({ type: DELETE_USER, payLoad: id });
   };
   useEffect(() => {
     dispatch({ type: FETCH_ALL_USERS, payLoad: [] });
@@ -47,7 +50,9 @@ export default function UserTable() {
                     <button onClick={(e) => editUser(e, userkey)}>Edit</button>
                   </td>
                   <td>
-                    <button>Delete</button>
+                    <button onClick={(e) => deleteUser(e, userkey)}>
+                      Delete
+                    </button>
                   </td>
                 </tr>
               );

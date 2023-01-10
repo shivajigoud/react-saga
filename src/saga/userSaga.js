@@ -46,7 +46,12 @@ function* createUser(userAction) {
   }
 }
 function* updateUser(userAction) {
-  const { response, error } = yield call(userAPI.updateUser);
+  // const [id, ...user] = userAction.payLoad;
+  const { response, error } = yield call(
+    userAPI.updateUser,
+    userAction.payLoad.id,
+    userAction.payLoad
+  );
   if (response.status == 200) {
     const users = yield response.json();
     yield put({ type: PUT_FETCH_ALL_USERS, payLoad: users });
@@ -58,7 +63,7 @@ function* updateUser(userAction) {
     });
     yield put({
       type: PUT_UPDATE_USER,
-      payLoad: userAction.payLoad,
+      payLoad: { [userAction.payLoad.id]: userAction.payLoad },
     });
   }
 }

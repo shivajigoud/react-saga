@@ -27,11 +27,15 @@ export const users = (state = {}, action) => {
         return { ...user };
       } else return state;
     case PUT_DELETE_USER:
-      if (action.payLoad)
-        return Object.keys(state).filter((key) => {
-          if (key !== action.payLoad) return state[key];
+      if (action.payLoad) {
+        let users = {};
+        Object.keys(state).filter((key) => {
+          if (key !== action.payLoad) {
+            users[key] = state[key];
+          }
         });
-      else return state;
+        return { ...users };
+      } else return state;
     default:
       return state;
   }
