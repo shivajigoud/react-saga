@@ -1,39 +1,56 @@
 import { axios } from 'axios';
 const userAPI = () => {
-  const fetchAllUsers = () => {
-    return fetch('https://gorest.co.in/public/v2/users')
-      .then((response) => ({ response }))
-      .catch((error) => ({ error }));
+  const fetchAllUsers = async () => {
+    try {
+      const response = await fetch('https://gorest.co.in/public/v2/users');
+      return { response };
+    } catch (error) {
+      return { error };
+    }
   };
-  const createUser = (user) => {
-    return fetch(
-      'https://gorest.co.in/public/v2/users',
-      { method: 'post' },
-      { data: JSON.stringify(user) }
-    )
-      .then((response) => ({ response }))
-      .catch((error) => ({ error }));
+  const createUser = async (user) => {
+    try {
+      const response = await fetch(
+        'https://gorest.co.in/public/v2/users',
+        { method: 'post' },
+        { data: JSON.stringify(user) }
+      );
+      return { response };
+    } catch (error) {
+      return { error };
+    }
   };
-  const updateUser = (id, user) => {
-    return fetch(
-      'https://gorest.co.in/public/v2/users/',
-      { method: 'post' },
-      { data: JSON.stringify(user) }
-    )
-      .then((response) => ({ response }))
-      .catch((error) => ({ error }));
+  const updateUser = async (id, user) => {
+    try {
+      const response = await fetch(
+        'https://gorest.co.in/public/v2/users/',
+        { method: 'post' },
+        { data: JSON.stringify(user) }
+      );
+      return { response };
+    } catch (error) {
+      return { error };
+    }
   };
-  const deleteUser = (id) => {
-    return fetch('https://gorest.co.in/public/v2/users/', {
-      method: 'post',
-    })
-      .then((response) => ({ response }))
-      .catch((error) => ({ error }));
+  const deleteUser = async (id) => {
+    try {
+      const response = await fetch('https://gorest.co.in/public/v2/users/', {
+        method: 'post',
+      });
+      return { response };
+    } catch (error) {
+      return { error };
+    }
   };
-  const fetchUser = (id) => {
-    return fetch('https://gorest.co.in/public/v2/users/')
-      .then((response) => ({ response }))
-      .catch((error) => ({ error }));
+  const fetchUser = async (id) => {
+    try {
+      const response = await fetch(
+        'https://gorest.co.in/public/v2/users/' + id
+      );
+      return { response };
+    } catch (error) {
+      return { error };
+    }
   };
   return { fetchAllUsers, createUser, updateUser, deleteUser, fetchUser };
 };
