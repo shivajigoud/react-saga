@@ -8,10 +8,10 @@ export default function UserTable() {
   const usersList = Object.entries(users);
   const error = useSelector((state) => state.usersError);
   const dispatch = useDispatch();
-  const { userFormState, setUserFormStateFunc } = useForm();
+  const { formState, setFormState } = useForm();
   const navigate = useNavigate();
   const editUser = async (e, id) => {
-    await setUserFormStateFunc('Save');
+    await setFormState('Save');
     // navigate('/editUser/:' + id);
   };
   useEffect(() => {

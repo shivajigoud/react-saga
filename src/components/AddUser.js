@@ -4,7 +4,7 @@ import { CREATE_USER } from '../actions/actions';
 import utils from '../utils/utils';
 import useForm from '../hooks/useForm';
 export default function AddUser() {
-  const { userFormState, setUserFormStateFunc } = useForm();
+  const { formState, setFormState } = useForm();
   const dispatch = useDispatch();
   const [user, setState] = useState({
     name: '',
@@ -77,7 +77,7 @@ export default function AddUser() {
           <option value="active">Active</option>
           <option value="inactive">Inactive</option>
         </select>
-        <button>{userFormState}</button>
+        <button>{formState}</button>
       </form>
     </div>
   );
