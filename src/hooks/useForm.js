@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-export default function useForm() {
+const useForm = () => {
   const [userFormState, setUserFormState] = useState('Submit');
-  return { userFormState, setUserFormState };
-}
+  const setUserFormStateFunc = (state) => {
+    setUserFormState(state);
+  };
+  return { userFormState, setUserFormStateFunc };
+};
+export default useForm;

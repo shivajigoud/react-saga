@@ -4,7 +4,7 @@ import { CREATE_USER } from '../actions/actions';
 import utils from '../utils/utils';
 import useForm from '../hooks/useForm';
 export default function AddUser() {
-  const { userFormState, setUserFormState } = useForm();
+  const { userFormState, setUserFormStateFunc } = useForm();
   const dispatch = useDispatch();
   const [user, setState] = useState({
     name: '',
@@ -23,7 +23,7 @@ export default function AddUser() {
     e.preventDefault();
     dispatch({ type: CREATE_USER, payLoad: user });
   };
-  useEffect(() => {}, [userFormState]);
+
   return (
     <div className="user_form">
       <h1>Create new user</h1>

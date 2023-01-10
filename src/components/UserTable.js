@@ -8,11 +8,11 @@ export default function UserTable() {
   const usersList = Object.entries(users);
   const error = useSelector((state) => state.usersError);
   const dispatch = useDispatch();
-  const { userFormState, setUserFormState } = useForm();
+  const { userFormState, setUserFormStateFunc } = useForm();
   const navigate = useNavigate();
   const editUser = async (e, id) => {
-    setUserFormState('Save');
-    navigate('/editUser/:' + id);
+    await setUserFormStateFunc('Save');
+    // navigate('/editUser/:' + id);
   };
   useEffect(() => {
     dispatch({ type: FETCH_ALL_USERS, payLoad: [] });
