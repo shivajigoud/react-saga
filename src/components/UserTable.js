@@ -15,7 +15,6 @@ export default function UserTable() {
     navigate('/editUser/' + id);
   };
   useEffect(() => {
-    setFormState('Submit');
     dispatch({ type: FETCH_ALL_USERS, payLoad: [] });
   }, []);
   return (
