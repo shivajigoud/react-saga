@@ -28,7 +28,7 @@ export default function AddUser() {
   useEffect(() => {
     formState.toUpperCase() == 'SAVE' &&
       dispatch({ type: FETCH_USER, payLoad: id });
-  });
+  }, []);
   return (
     <div className="user_form">
       <h1>Create new user</h1>
