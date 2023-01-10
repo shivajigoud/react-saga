@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import AddUser from '../components/AddUser';
 import UserTable from '../components/UserTable';
+import EditUser from '../components/EditUser';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/editUser/:id',
-    element: <AddUser></AddUser>,
+    element: <EditUser></EditUser>,
   },
 ]);
 export default router;

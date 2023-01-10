@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import utils from '../utils/utils';
-import { CREATE_USER } from '../actions/actions';
+import { CREATE_USER, UPDATE_USER } from '../actions/actions';
 import useForm from '../hooks/useForm';
-
+import { useDispatch } from 'react-redux';
 export default function UserForm({ name, email, gender, status }) {
+  const dispatch = useDispatch();
   const [user, setState] = useState({
     name: '',
     email: '',
@@ -20,7 +21,9 @@ export default function UserForm({ name, email, gender, status }) {
   };
   const userSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch({ type: CREATE_USER, payLoad: user });
+    if (formState.toUpperCase() == 'SAVE') {
+      dispatch({ type: UPDATE_USER, payLoad: user });
+    } else dispatch({ type: CREATE_USER, payLoad: user });
   };
   useEffect(() => {
     setState({ ...user, name, email, gender, status });
