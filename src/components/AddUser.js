@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CREATE_USER } from '../actions/actions';
+import { CREATE_USER, FETCH_USER } from '../actions/actions';
 import utils from '../utils/utils';
 import useForm from '../hooks/useForm';
+import { useParams } from 'react-router-dom';
 export default function AddUser() {
+  let { id } = useParams();
   const { formState, setFormState } = useForm();
   const dispatch = useDispatch();
   const [user, setState] = useState({
@@ -23,7 +25,10 @@ export default function AddUser() {
     e.preventDefault();
     dispatch({ type: CREATE_USER, payLoad: user });
   };
-
+  useEffect(() => {
+    formState.toUpperCase() == 'SAVE' &&
+      dispatch({ type: FETCH_USER, payLoad: id });
+  });
   return (
     <div className="user_form">
       <h1>Create new user</h1>

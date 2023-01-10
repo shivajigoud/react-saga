@@ -12,7 +12,7 @@ export default function UserTable() {
   const navigate = useNavigate();
   const editUser = async (e, id) => {
     await setFormState('Save');
-    // navigate('/editUser/:' + id);
+    navigate('/editUser/' + id);
   };
   useEffect(() => {
     dispatch({ type: FETCH_ALL_USERS, payLoad: [] });

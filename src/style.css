@@ -12,6 +12,8 @@ p {
 .container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
 }
 .user_form form {
   display: flex;
@@ -43,4 +45,12 @@ p {
 }
 .error {
   color: red;
+}
+
+#root > .user_form {
+  margin: 0 auto;
+}
+.user_form {
+  max-width: 500px;
+  min-width: 300px;
 }
