@@ -16,11 +16,16 @@ export const users = (state = {}, action) => {
     case PUT_UPDATE_USER:
       return { ...state, ...action.payLoad };
     case PUT_FETCH_USER:
-      if (action.payLoad)
-        return Object.keys(state).filter((key) => {
-          if (key == action.payLoad) return state[key];
+      if (action.payLoad) {
+        let user;
+        Object.keys(state).filter((key) => {
+          if (key == action.payLoad) {
+            user = state[key];
+            break;
+          }
         });
-      else return state;
+        return { ...user };
+      } else return state;
     case PUT_DELETE_USER:
       if (action.payLoad)
         return Object.keys(state).filter((key) => {
@@ -39,4 +44,3 @@ export const usersError = (state = { error: null }, action) => {
       return state;
   }
 };
-

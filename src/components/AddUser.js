@@ -6,6 +6,8 @@ import useForm from '../hooks/useForm';
 import { useParams } from 'react-router-dom';
 export default function AddUser() {
   let { id } = useParams();
+  const users = useSelector((state) => state.users);
+  console.log('from add users' + JSON.stringify(users));
   const { formState, setFormState } = useForm();
   const dispatch = useDispatch();
   const [user, setState] = useState({
@@ -26,7 +28,7 @@ export default function AddUser() {
     dispatch({ type: CREATE_USER, payLoad: user });
   };
   useEffect(() => {
-    formState.toUpperCase() == 'SAVE' &&
+    if (formState.toUpperCase() == 'SAVE')
       dispatch({ type: FETCH_USER, payLoad: id });
   }, []);
   return (
