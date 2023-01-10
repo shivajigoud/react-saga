@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-
-const useForm = () => {
-  const [userFormState, setUserFormState] = useState('Submit');
-  const setUserFormStateFunc = (state) => {
-    setUserFormState(state);
-  };
-  return { userFormState, setUserFormStateFunc };
-};
-export default useForm;
+import React, { useContext } from 'react';
+import { FormContext } from '../context/FormContext';
+export default function useForm() {
+  const context = useContext(FormContext);
+  if (!context) {
+    throw Error('some error in creating context');
+  }
+  return context;
+}
