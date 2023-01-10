@@ -1,6 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { users } from './userReducer';
+import { users, usersError } from './userReducer';
 
 export const rootReducer = combineReducers({
   users,
+  usersError,
 });
