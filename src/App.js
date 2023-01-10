@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import './style.css';
 import UserTable from './components/UserTable';
+import AddUser from './components/AddUser';
 export default function App() {
   return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
+    <div className="container">
+      <AddUser></AddUser>
       <UserTable></UserTable>
     </div>
   );
