@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FETCH_ALL_USERS } from '../actions/actions';
+import useForm from '../hooks/useForm';
 
 export default function UserTable() {
   const users = useSelector((state) => state.users);
   const usersList = Object.entries(users);
   const error = useSelector((state) => state.usersError);
   const dispatch = useDispatch();
+  const { userFormState, setUserFormState } = useForm();
+  const editUser = (id) => {
+    setUserFormState('Save');
+  };
   useEffect(() => {
     dispatch({ type: FETCH_ALL_USERS, payLoad: [] });
   }, []);
@@ -37,7 +42,9 @@ export default function UserTable() {
                   <td>{userData.gender}</td>
                   <td>{userData.status}</td>
                   <td>
-                    <button>Edit</button>
+                    <button onClick={(userKey) => editUser(userKey)}>
+                      Edit
+                    </button>
                   </td>
                   <td>
                     <button>Delete</button>

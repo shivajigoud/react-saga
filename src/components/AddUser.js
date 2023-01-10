@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CREATE_USER } from '../actions/actions';
 import utils from '../utils/utils';
+import useForm from '../hooks/useForm';
 export default function AddUser() {
+  const { userFormState, setUserFormState } = useForm();
   const dispatch = useDispatch();
   const [user, setState] = useState({
     name: '',
@@ -74,7 +76,7 @@ export default function AddUser() {
           <option value="active">Active</option>
           <option value="inactive">Inactive</option>
         </select>
-        <button>Submit</button>
+        <button>{userFormState}</button>
       </form>
     </div>
   );
