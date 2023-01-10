@@ -36,11 +36,12 @@ function* createUser(userAction) {
   } else {
     yield put({
       type: PUT_ERROR,
-      payLoad: 'There is an error occured while fetching users list',
+      payLoad:
+        'There is an error occured while creating users on server. But added in client side temporarily',
     });
     yield put({
       type: PUT_CREATE_USER,
-      payLoad: userAction.payLoad,
+      payLoad: { [userAction.payLoad.id]: userAction.payLoad },
     });
   }
 }

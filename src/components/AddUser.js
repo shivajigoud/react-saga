@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CREATE_USER } from '../actions/actions';
+import utils from '../utils/utils';
 export default function AddUser() {
   const dispatch = useDispatch();
   const [user, setState] = useState({
@@ -8,6 +9,7 @@ export default function AddUser() {
     email: '',
     gender: '',
     status: '',
+    id: utils.getNewID(1200),
   });
   const handleChange = (e) => {
     setState({

@@ -8,7 +8,7 @@ const userAPI = () => {
   const createUser = (user) => {
     return fetch(
       'https://gorest.co.in/public/v2/users',
-      { method: post },
+      { method: 'post' },
       { data: JSON.stringify(user) }
     )
       .then((response) => ({ response }))
@@ -17,14 +17,16 @@ const userAPI = () => {
   const updateUser = (id, user) => {
     return fetch(
       'https://gorest.co.in/public/v2/users/' + id,
-      { method: patch },
+      { method: 'patch' },
       { data: JSON.stringify(user) }
     )
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
   };
   const deleteUser = (id) => {
-    return fetch('https://gorest.co.in/public/v2/users/' + id, { method: post })
+    return fetch('https://gorest.co.in/public/v2/users/' + id, {
+      method: 'post',
+    })
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
   };
