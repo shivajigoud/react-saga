@@ -2,15 +2,17 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FETCH_ALL_USERS } from '../actions/actions';
 import useForm from '../hooks/useForm';
-
+import { useNavigate } from 'react-router-dom';
 export default function UserTable() {
   const users = useSelector((state) => state.users);
   const usersList = Object.entries(users);
   const error = useSelector((state) => state.usersError);
   const dispatch = useDispatch();
   const { userFormState, setUserFormState } = useForm();
-  const editUser = (id) => {
+  const navigate = useNavigate();
+  const editUser = async (id) => {
     setUserFormState('Save');
+    navigate('/editUser');
   };
   useEffect(() => {
     dispatch({ type: FETCH_ALL_USERS, payLoad: [] });
