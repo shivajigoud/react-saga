@@ -30,6 +30,7 @@ export default function AddUser() {
   useEffect(() => {
     if (formState.toUpperCase() == 'SAVE')
       dispatch({ type: FETCH_USER, payLoad: id });
+    else dispatch({ type: FETCH_ALL_USERS, payLoad: [] });
   }, []);
   return (
     <div className="user_form">
