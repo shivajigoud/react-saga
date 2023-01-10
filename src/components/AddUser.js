@@ -6,15 +6,15 @@ import useForm from '../hooks/useForm';
 import { useParams } from 'react-router-dom';
 export default function AddUser() {
   let { id } = useParams();
-  const users = useSelector((state) => state.users);
-  console.log('from add users' + JSON.stringify(users));
+  const { name, email, gender, status } = useSelector((state) => state.users);
+  console.log('from add users' + email);
   const { formState, setFormState } = useForm();
   const dispatch = useDispatch();
   const [user, setState] = useState({
-    name: '',
-    email: '',
-    gender: '',
-    status: '',
+    name: name || '',
+    email: email || '',
+    gender: gender || '',
+    status: status || '',
     id: utils.getNewID(1200),
   });
   const handleChange = (e) => {

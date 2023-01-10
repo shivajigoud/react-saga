@@ -21,7 +21,7 @@ export const users = (state = {}, action) => {
         Object.keys(state).filter((key) => {
           if (key == action.payLoad) {
             user = state[key];
-            break;
+            return;
           }
         });
         return { ...user };
