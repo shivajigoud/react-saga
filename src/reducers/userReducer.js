@@ -16,9 +16,9 @@ export const users = (state = {}, action) => {
     case PUT_UPDATE_USER:
       return { ...state, ...action.payLoad };
     case PUT_FETCH_USER:
-      return Object.keys(state).filter((user) => user.id == action.payLoad);
+      return Object.keys(state).filter((key) => key == action.payLoad);
     case PUT_DELETE_USER:
-      return Object.keys(state).filter((user) => user.id !== action.payLoad);
+      return Object.keys(state).filter((key) => key !== action.payLoad);
     default:
       return state;
   }
