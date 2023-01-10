@@ -21,3 +21,15 @@ p {
   margin: 5px;
   padding: 5px;
 }
+.user_table table {
+  background: #008b8b17;
+}
+.user_table thead {
+  background: #4bc4c7;
+}
+.user_table tr:nth-child(even) {
+  background: #4e9a9c36;
+}
+.user_table tr:nth-child(odd) {
+  background: #22767745;
+}

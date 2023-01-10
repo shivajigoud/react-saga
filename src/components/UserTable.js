@@ -17,10 +17,14 @@ export default function UserTable() {
       <h2>{error.error}</h2>
       <table>
         <thead>
-          <td>Name</td>
-          <td>Email</td>
-          <td>Gender</td>
-          <td>Status</td>
+          <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Gender</td>
+            <td>Status</td>
+            <td>Edit</td>
+            <td>Delete</td>
+          </tr>
         </thead>
         <tbody>
           {usersList &&
@@ -33,6 +37,12 @@ export default function UserTable() {
                   <td>{userData.email}</td>
                   <td>{userData.gender}</td>
                   <td>{userData.status}</td>
+                  <td>
+                    <button>Edit</button>
+                  </td>
+                  <td>
+                    <button>Delete</button>
+                  </td>
                 </tr>
               );
             })}
