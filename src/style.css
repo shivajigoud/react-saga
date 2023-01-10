@@ -1,6 +1,8 @@
 * {
   margin: 0px;
   padding: 0px;
+  font-family: sans-serif;
+  font-size: 100%;
 }
 h1,
 p {
@@ -21,15 +23,24 @@ p {
   margin: 5px;
   padding: 5px;
 }
-.user_table table {
+.user_table table,
+.user_form form {
   background: #008b8b17;
+  border-radius: 5px;
 }
 .user_table thead {
   background: #4bc4c7;
 }
-.user_table tr:nth-child(even) {
+.user_table tr:nth-child(even),
+.user_form label {
   background: #4e9a9c36;
 }
 .user_table tr:nth-child(odd) {
   background: #22767745;
+}
+.user_form input {
+  border-radius: 5px;
+}
+.error {
+  color: red;
 }

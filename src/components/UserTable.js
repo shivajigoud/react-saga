@@ -13,8 +13,7 @@ export default function UserTable() {
   return (
     <div className="user_table">
       <h1>User Table</h1>
-
-      <h2>{error.error}</h2>
+      {error.error && <h2 className="error user_error">{error.error}</h2>}
       <table>
         <thead>
           <tr>

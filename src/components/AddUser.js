@@ -43,6 +43,7 @@ export default function AddUser() {
           onChange={handleChange}
           placeholder="Email"
         />
+        <label>Gender</label>
         <span>
           <label htmlFor="male">Male</label>
           <input
