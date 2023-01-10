@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CREATE_USER } from '../actions/actions';
 import utils from '../utils/utils';
@@ -23,6 +23,7 @@ export default function AddUser() {
     e.preventDefault();
     dispatch({ type: CREATE_USER, payLoad: user });
   };
+  useEffect(() => {}, [userFormState]);
   return (
     <div className="user_form">
       <h1>Create new user</h1>
