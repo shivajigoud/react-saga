@@ -17,8 +17,8 @@ export const users = (state = {}, action) => {
       if (Object.keys(action.payLoad).length) {
         let users = {};
         Object.keys(state).filter((key) => {
-          if (state[key][id] == Object.keys(action.payLoad)[0]) {
-            users[key] = action.payLoad[state[key][id]];
+          if (state[key]['id'] == Object.keys(action.payLoad)[0]) {
+            users[key] = action.payLoad[state[key]['id']];
           } else users[key] = state[key];
         });
         return { ...users };
