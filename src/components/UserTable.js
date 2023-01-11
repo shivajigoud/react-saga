@@ -18,7 +18,8 @@ export default function UserTable() {
     dispatch({ type: DELETE_USER, payLoad: id });
   };
   useEffect(() => {
-    dispatch({ type: FETCH_ALL_USERS, payLoad: [] });
+    if (Object.keys(users).length <= 0)
+      dispatch({ type: FETCH_ALL_USERS, payLoad: [] });
   }, []);
   return (
     <div className="user_table">

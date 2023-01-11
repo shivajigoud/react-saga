@@ -3,7 +3,7 @@ import utils from '../utils/utils';
 import { CREATE_USER, UPDATE_USER } from '../actions/actions';
 import useForm from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
-export default function UserForm({ name, email, gender, status }) {
+export default function UserForm({ name, email, gender, status, id }) {
   const dispatch = useDispatch();
   const [user, setState] = useState({
     name: '',
@@ -26,7 +26,7 @@ export default function UserForm({ name, email, gender, status }) {
     } else dispatch({ type: CREATE_USER, payLoad: user });
   };
   useEffect(() => {
-    if (name) setState({ ...user, name, email, gender, status });
+    if (name) setState({ ...user, name, email, gender, status, id });
   }, [name]);
   return (
     <div className="user_form">
