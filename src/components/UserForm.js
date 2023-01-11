@@ -3,8 +3,10 @@ import utils from '../utils/utils';
 import { CREATE_USER, UPDATE_USER } from '../actions/actions';
 import useForm from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 export default function UserForm({ name, email, gender, status, id }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [user, setState] = useState({
     name: '',
     email: '',
@@ -23,6 +25,7 @@ export default function UserForm({ name, email, gender, status, id }) {
     e.preventDefault();
     if (formState.toUpperCase() == 'SAVE') {
       dispatch({ type: UPDATE_USER, payLoad: user });
+      navigate('/');
     } else dispatch({ type: CREATE_USER, payLoad: user });
   };
   useEffect(() => {
