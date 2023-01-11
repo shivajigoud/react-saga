@@ -15,17 +15,18 @@ export const users = (state = {}, action) => {
       return { ...state, ...action.payLoad };
     case PUT_UPDATE_USER:
       return { ...state, ...action.payLoad };
-    case PUT_FETCH_USER:
-      if (action.payLoad) {
-        let user;
-        Object.keys(state).filter((key) => {
-          if (key == action.payLoad) {
-            user = state[key];
-            return;
-          }
-        });
-        return { ...user };
-      } else return state;
+    //Below code mutating the state so removed - 
+    // case PUT_FETCH_USER:
+    //   if (action.payLoad) {
+    //     let user;
+    //     Object.keys(state).filter((key) => {
+    //       if (key == action.payLoad) {
+    //         user = state[key];
+    //         return;
+    //       }
+    //     });
+    //     return { ...user };
+    //   } else return state;
     case PUT_DELETE_USER:
       if (action.payLoad) {
         let users = {};

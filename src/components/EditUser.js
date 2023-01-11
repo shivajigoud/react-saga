@@ -7,18 +7,24 @@ import UserForm from './UserForm';
 
 export default function AddUser() {
   let { id } = useParams();
-  const { name, email, gender, status } = useSelector((state) => state.users);
-  console.log('from add users#####' + email);
+  const users = useSelector((state) => state.users);
+  const [currentUser, setCurrentUser] = useState();
   const { formState, setFormState } = useForm();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (formState.toUpperCase() == 'SAVE' && id) {
-      dispatch({ type: FETCH_USER, payLoad: id });
+      // dispatch({ type: FETCH_USER, payLoad: id });
+      Object.keys(users).filter((key) => {
+        if (key == id) {
+          setCurrentUser(users[key]);
+          return;
+        }
+      });
     }
     return () => {
       setFormState('Submit');
     };
   }, []);
-  return <UserForm {...{ name, email, gender, status }}></UserForm>;
+  return <UserForm {...currentUser}></UserForm>;
 }

@@ -26,7 +26,7 @@ export default function UserForm({ name, email, gender, status }) {
     } else dispatch({ type: CREATE_USER, payLoad: user });
   };
   useEffect(() => {
-    setState({ ...user, name, email, gender, status });
+    if (name) setState({ ...user, name, email, gender, status });
   }, [name]);
   return (
     <div className="user_form">
