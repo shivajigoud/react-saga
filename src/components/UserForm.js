@@ -8,11 +8,11 @@ export default function UserForm({ name, email, gender, status, id }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setState] = useState({
-    name: '',
-    email: '',
-    gender: '',
-    status: '',
-    id: utils.getNewID(1200),
+    name: name || '',
+    email: email || '',
+    gender: gender || 'male',
+    status: status || 'active',
+    id: id || utils.getNewID(1200),
   });
   const { formState, setFormState } = useForm();
   const handleChange = (e) => {
@@ -63,6 +63,7 @@ export default function UserForm({ name, email, gender, status, id }) {
             value="male"
             onChange={handleChange}
             checked={user.gender === 'male'}
+            defaultChecked={true}
           />
           <label htmlFor="female">Female</label>
           <input
@@ -78,7 +79,7 @@ export default function UserForm({ name, email, gender, status, id }) {
         <select
           id="status"
           name="status"
-          value={user.status}
+          value={user.status || 'active'}
           onChange={handleChange}
         >
           <option value="active">Active</option>
